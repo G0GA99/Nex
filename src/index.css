@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-accent-light: var(--accent-light);
+  --color-accent-light-alpha: var(--accent-light-alpha);
+  --color-accent-main: var(--accent-main);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-glow: var(--accent-glow);
+  --color-accent-fg: var(--accent-fg);
+}
+
+:root {
+  /* Default Black Accent (Light Mode) */
+  --accent-light: #f3f4f6;
+  --accent-light-alpha: rgba(243, 244, 246, 0.6);
+  --accent-main: #000000;
+  --accent-dark: #374151;
+  --accent-glow: rgba(0, 0, 0, 0.15);
+  --accent-fg: #ffffff;
+}
+
+.dark {
+  /* Default Black Accent turned White in Dark Mode for contrast */
+  --accent-light: #1f2937;
+  --accent-light-alpha: rgba(31, 41, 55, 0.6);
+  --accent-main: #ffffff;
+  --accent-dark: #e5e7eb;
+  --accent-glow: rgba(255, 255, 255, 0.15);
+  --accent-fg: #000000;
+}
+
+.theme-green {
+  /* Green Accent (Light Mode) */
+  --accent-light: #d1fae5;
+  --accent-light-alpha: rgba(209, 250, 229, 0.6);
+  --accent-main: #059669;
+  --accent-dark: #064e3b;
+  --accent-glow: rgba(5, 150, 105, 0.2);
+  --accent-fg: #ffffff;
+}
+
+.dark .theme-green {
+  /* Green Accent (Dark Mode) */
+  --accent-light: #064e3b;
+  --accent-light-alpha: rgba(6, 78, 59, 0.6);
+  --accent-main: #10b981;
+  --accent-dark: #a7f3d0;
+  --accent-glow: rgba(16, 185, 129, 0.2);
+  --accent-fg: #000000;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  @apply bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-xl shadow-slate-200/50 dark:shadow-black/50;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-500;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-blob {
+    animation: blob 15s infinite alternate;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1.05); }
+}
